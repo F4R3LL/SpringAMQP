@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "queue.getName.name",
+    "type": "java.lang.String",
+    "description": "A description for 'queue.getName.name'"
+  },
+  {
+    "name": "queue.setName.name",
+    "type": "java.lang.String",
+    "description": "A description for 'queue.setName.name'"
+  }
+]}

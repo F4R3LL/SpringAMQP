@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  rabbit:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 8080:15672
+      - 5672:5672
+
+  producer:
+    image: valcsi/producer:latest
+    container_name: producer
+    depends_on:
+      - rabbit
+    volumes:
+      - /tmp
+    environment:
+    - server_port=8081
+    - rabbit_host=rabbit
+
+  consumer1:
+    image: valcsi/consumer1:latest
+    container_name: consumer1
+    depends_on:
+      - rabbit
+    volumes:
+      - /tmp
+    environment:
+    - server_port=8082
+    - rabbit_host=rabbit
+
+  consumer2:
+    image: valcsi/consumer2:latest
+    container_name: consumer2
+    depends_on:
+      - rabbit
+    volumes:
+      - /tmp
+    environment:
+    - server_port=8083
+    - rabbit_host=rabbit
+    
+  consumer3:
+    image: valcsi/consumer3:latest
+    container_name: consumer3
+    depends_on:
+      - rabbit
+    volumes:
+      - /tmp
+    environment:
+    - server_port=8084
+    - rabbit_host=rabbit
